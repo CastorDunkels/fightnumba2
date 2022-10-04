@@ -6,28 +6,40 @@ while (f1.hp >= 0)
 {
     Console.Clear();
     Console.WriteLine($"Name:{f1.name} \nHealth:{f1.hp}\n");
-    Console.WriteLine($"Weapon:{f1.sword.name} \nDurability:{f1.sword.durability}\n\n");
+    if (f1.sword.durability == -1){
+        Console.WriteLine($"Weapon:{f1.sword.hands}\nDurability:{f1.sword.broken}\n\n");
+    }
+    else{
+    Console.WriteLine($"Weapon:{f1.sword.name}\nDurability:{f1.sword.durability}\n\n");
+    }
     Console.WriteLine("Choose what to do:\n(A): Attack your opponent.\n(B): Heal yourself.\n(C): Repair your weapon.");
     string action = Console.ReadLine();
     action = action.ToLower();
 
     if (action == "attack" || action == "a")
     {
+        Console.Clear();
         f1.sword.attack();
+        Console.WriteLine("Press any button to continue");
     }
-    else if (action == "heal" || action == "h")
+    else if (action == "heal" || action == "h" || action == "b")
     {
-        //heal function
+        Console.Clear();
+        f1.heal();
+        Console.WriteLine("Press any button to continue");
     }
-    else if (action == "repair" || action == "r")
+    else if (action == "repair" || action == "r" || action == "c")
     {
-        //repair funciton
+        Console.Clear();
+        f1.sword.repair();
+        Console.WriteLine("Press any button to continue");
     }
     else
     {
-        Console.WriteLine("You cannot choose to do nothing");
+        Console.Clear();
+        Console.WriteLine("You cannot choose to do nothing\nPress any button to continue");
     }
-    Console.ReadLine();
+    Console.ReadKey();
     
 
 }
