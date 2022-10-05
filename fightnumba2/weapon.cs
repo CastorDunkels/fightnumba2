@@ -1,68 +1,54 @@
+using System.Reflection.Metadata.Ecma335;
 using System;
 
-public class weapon
+public class Weapon
 {
-    public int dmg;
 
-    public int maxAttack = 30;
+    public int maxAttack;
 
-    public int minAttack = 10;
+    public int minAttack;
 
-    public int handDmg;
-
-    public int handMinAttack = 1;
-
-    public int handMaxAttack = 4;
-
-    public int durability = 10;
+    public int durability;
 
     public int breaking;
 
     public int fixing;
     
-    public string enemyWeapon = "Longsword";
-
-    
-
-    public string name = "Moonlight";
-
-    public string hands = "Hands";
+    public string name;
 
     public string broken = "None";
 
+    public Weapon(string name, int durability, int minAttack, int maxAttack){
+        this.name = name;
+        this.durability = durability;
+        this.minAttack = minAttack;
+        this.maxAttack = maxAttack;
+    }
+
     private Random generator = new Random();
 
+    /*public int howMuchDmg(){
+        return dmg;
+    }*/
 
-    public void attack()
+
+    public void attack(Fighta person)
     {
-        if (durability > 0)
+        int dmg = generator.Next(minAttack, maxAttack);
+        person.takeDmg(dmg);
+        Console.WriteLine($"You did {dmg}:dmg");
+        breaking = generator.Next(1, 10);
+        if (breaking > 1)
         {
-            dmg = generator.Next(minAttack, maxAttack);
-            Console.WriteLine($"You did {dmg}:dmg");
-            breaking = generator.Next(1, 10);
-            if (breaking > 1)
-            {
-                durability--;
-                if(durability == 0){
-                    Console.WriteLine("Your weapon broke");
-                    durability = -1;
-                }
-                else{
-                Console.WriteLine("Your weapons durability lessened");
-
-                }
+            durability--;
+            if(durability == 0){
+                Console.WriteLine("Your weapon broke");
+                durability = -1;
+            }
+            else{
+            Console.WriteLine("Your weapons durability lessened");
 
             }
-            else
-            {
-                Console.WriteLine("Your attack was well placed which left your sword unscathed");
-            }
-            
-        }
-        else
-        {
-            handDmg = generator.Next(handMinAttack, handMaxAttack);
-            Console.WriteLine($"You did {handDmg}:dmg");
 
         }
     }
