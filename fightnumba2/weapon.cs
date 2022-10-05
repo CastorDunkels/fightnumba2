@@ -4,7 +4,7 @@ public class weapon
 {
     public int dmg;
 
-    public int maxAttack = 100;
+    public int maxAttack = 30;
 
     public int minAttack = 10;
 
@@ -19,6 +19,10 @@ public class weapon
     public int breaking;
 
     public int fixing;
+    
+    public string enemyWeapon = "Longsword";
+
+    
 
     public string name = "Moonlight";
 
@@ -53,6 +57,7 @@ public class weapon
             {
                 Console.WriteLine("Your attack was well placed which left your sword unscathed");
             }
+            
         }
         else
         {

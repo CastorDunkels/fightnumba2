@@ -4,6 +4,10 @@ public class fighta
     public string name = "Los Pollos Hermanos";
     public int hp = 20;
 
+    public string enemyName = "Los Culos Hermanos";
+
+    public int enemyAction;
+
     public int healing;
 
     public weapon sword;
